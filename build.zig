@@ -41,6 +41,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     cjson_static.addCSourceFiles(&source_files, &cflags);
+    cjson_static.addIncludePath(.{ .path = "." });
     cjson_static.linkLibC();
     b.installArtifact(cjson_static);
 
@@ -51,6 +52,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     cjson_shared.addCSourceFiles(&source_files, &cflags);
+    cjson_shared.addIncludePath(.{ .path = "." });
     cjson_shared.linkLibC();
     b.installArtifact(cjson_shared);
 
