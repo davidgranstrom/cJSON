@@ -35,7 +35,7 @@ pub fn build(b: *std.Build) void {
     };
 
     const cjson_static = b.addStaticLibrary(.{
-        .name = "cjson",
+        .name = "cjson-static",
         .version = version,
         .target = target,
         .optimize = optimize,
