@@ -53,6 +53,9 @@ pub fn build(b: *std.Build) void {
     cjson_shared.addCSourceFiles(&source_files, &cflags);
     cjson_shared.linkLibC();
     b.installArtifact(cjson_shared);
+
+    b.getInstallStep().dependOn(&b.addInstallHeaderFile("cJSON.h", "cJSON.h").step);
+    b.getInstallStep().dependOn(&b.addInstallHeaderFile("cJSON_Utils.h", "cJSON_Utils.h").step);
 }
 
 const source_files = [_][]const u8{
